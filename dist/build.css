@@ -1,0 +1,209 @@
+header {
+  background: #808080;
+  box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  height: 64px;
+  position: fixed;
+  top: 0;
+  z-index: 1; }
+
+nav {
+  background: #606060;
+  box-sizing: border-box;
+  min-width: 400px;
+  max-width: 930px;
+  height: 100%;
+  margin: auto;
+  padding: 0px 16px;
+  display: flex;
+  align-items: center; }
+  nav .menu {
+    height: 100%;
+    display: flex; }
+    nav .menu .menu__item {
+      height: 100%; }
+      nav .menu .menu__item .menu__item-link {
+        font-size: 16px;
+        color: #fc6;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        padding: 0 16px; }
+        nav .menu .menu__item .menu__item-link.selected {
+          border-bottom: 2px solid #c96; }
+        nav .menu .menu__item .menu__item-link:active, nav .menu .menu__item .menu__item-link:link {
+          outline: none; }
+        nav .menu .menu__item .menu__item-link:hover {
+          background: #404040; }
+      nav .menu .menu__item[disabled] .menu__item-link {
+        color: #a0a0a0; }
+        nav .menu .menu__item[disabled] .menu__item-link:hover {
+          background: #606060;
+          cursor: default; }
+.main {
+  box-sizing: border-box;
+  background: #404040;
+  max-width: 930px;
+  min-width: 400px;
+  min-height: 100vh;
+  margin: 64px auto 0 auto;
+  padding: 0 16px; }
+.user-list__item {
+  border-bottom: 1px solid #808080;
+  width: 100%;
+  height: 112px;
+  padding: 0 16px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer; }
+  .user-list__item:hover .name {
+    color: #fff; }
+  .user-list__item.selected {
+    border-right: 4px solid #9ce;
+    background: #303030; }
+    .user-list__item.selected:after {
+      content: '';
+      background: #9ce;
+      display: block;
+      width: 12px;
+      height: 12px;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translate(50%, -50%) rotate(45deg); }
+  .user-list__item:last-child {
+    border-bottom: none; }
+
+.user-info .name {
+  font: 24px Helvetica;
+  color: #ccc;
+  letter-spacing: 1px;
+  height: 64px;
+  line-height: 64px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+.user-info .phone {
+  font-size: 18px;
+  color: #9ce;
+  height: 32px;
+  line-height: 32px;
+  letter-spacing: 1px; }
+/*
+------------------------------------------------------------------------------------------
+	Reset section. v1.0 | 20080212
+------------------------------------------------------------------------------------------
+*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, menu, li,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td	{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+	line-height: 1;
+}
+
+ol, ul, menu {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: none;
+}
+
+/*
+	remember to define focus styles!
+*/
+:focus {
+	outline: 0;
+}
+
+/*
+	remember to highlight inserts somehow!
+*/
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}html, body {
+  height: 100%; }
+
+body {
+  font: 13px verdana;
+  color: #eee;
+  background: #505050;
+  height: 100%;
+  position: relative; }
+
+a {
+  text-decoration: none; }
+
+.noselect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Chrome/Safari/Opera */
+  -khtml-user-select: none;
+  /* Konqueror */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* IE/Edge */
+  user-select: none; }
+
+.screen-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); }
+
+/*
+ *  Footer
+ */
+footer {
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  bottom: 10px; }
+
+.svg-icon path {
+  fill: #808080; }
+
+.svg-icon path:hover {
+  fill: #ccc; }
+
+.social-link:hover .svg-icon path {
+  fill: #ccc; }
+
+/*# sourceMappingURL=build.css.map*/
