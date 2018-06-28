@@ -10,6 +10,45 @@ body {
 	position: relative;
 }
 
+h2 {
+	font: 24px verdana;
+	color: $color_secondary;
+	letter-spacing: 1px;
+	padding: 0 0 16px 0;
+}
+
+h3 {
+	font: 16px verdana;
+	color: $color_primary;
+	letter-spacing: 1px;
+	padding: 0 0 8px 0;
+}
+
+p {
+	line-height: 24px;
+}
+
+.simple-list {
+
+	li {
+		line-height: 24px;
+		padding: 0 0 0 8px;
+
+		&:before {
+			content: '';
+			background: $color_secondary;
+			display: block;
+			width: 8px;
+			height: 8px;
+			position: relative;
+			left: -8px;
+			top: 8px;
+			float: left;
+
+		}
+	}
+}
+
 a {
     text-decoration: none;
 }

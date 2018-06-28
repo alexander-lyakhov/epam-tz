@@ -9,7 +9,7 @@ class MainLayout extends React.Component
     {
         return (
             <div className="main">
-                <ContactList />
+                {this.props.children}
             </div>
         );
     }
