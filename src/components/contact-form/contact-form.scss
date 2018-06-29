@@ -13,7 +13,7 @@
 			margin: 4px 0 16px;
 
 			label {
-				color: $color_secondary;
+				color: $color_primary;
 				display: block;
 				height: 40px;
 				line-height: 40px;
@@ -30,7 +30,7 @@
 
 				.text-input {
 					font: 16px verdana;
-					color: #ccc;
+					color: $color_secondary;
 					background: #000;
 					border: none;
 					outline: none;

@@ -1,107 +1,107 @@
 [
   {
     "id": "4b57b3ed83",
-    "lName": "Иванов",
-    "fName": "Иван",
-    "sName": "Иванович",
+    "lastName": "Иванов",
+    "firstName": "Иван",
+    "secondName": "Иванович",
     "phone": "699-95-39"
   },
   {
     "id": "e50d8c5c14",
-    "lName": "Петров",
-    "fName": "Петр",
-    "sName": "Петрович",
+    "lastName": "Петров",
+    "firstName": "Петр",
+    "secondName": "Петрович",
     "phone": "698-96-86"
   },
   {
     "id": "bbf92e956e",
-    "lName": "Сидоров",
-    "fName": "Сидор",
-    "sName": "Сидорович",
+    "lastName": "Сидоров",
+    "firstName": "Сидор",
+    "secondName": "Сидорович",
     "phone": "104-05-21"
   },
   {
     "id": "15246863d9d",
-    "lName": "Васильев",
-    "fName": "Василий",
-    "sName": "Васильевич",
+    "lastName": "Васильев",
+    "firstName": "Василий",
+    "secondName": "Васильевич",
     "phone": "750-32-06"
   },
   {
     "id": "9a087f6d91",
-    "lName": "Михайлов",
-    "fName": "Михаил",
-    "sName": "Михайлович",
+    "lastName": "Михайлов",
+    "firstName": "Михаил",
+    "secondName": "Михайлович",
     "phone": "909-68-78"
   },
   {
     "id": "143957a12fd",
-    "lName": "Семенов",
-    "fName": "Семен",
-    "sName": "Семенович",
+    "lastName": "Семенов",
+    "firstName": "Семен",
+    "secondName": "Семенович",
     "phone": "084-97-47"
   },
   {
     "id": "4843ae27f6",
-    "lName": "Антонов",
-    "fName": "Антон",
-    "sName": "Антонович",
+    "lastName": "Антонов",
+    "firstName": "Антон",
+    "secondName": "Антонович",
     "phone": "262-00-56"
   },
   {
     "id": "1109679f001",
-    "lName": "Агафонов",
-    "fName": "Агафон",
-    "sName": "Агафонович",
+    "lastName": "Агафонов",
+    "firstName": "Агафон",
+    "secondName": "Агафонович",
     "phone": "734-24-00"
   },
   {
     "id": "7247e67932",
-    "lName": "Либерзон",
-    "fName": "Валентин",
-    "sName": "Генрихович",
+    "lastName": "Либерзон",
+    "firstName": "Валентин",
+    "secondName": "Генрихович",
     "phone": "715-26-64"
   },
   {
     "id": "5d90e572f1",
-    "lName": "Фомин",
-    "fName": "Фома",
-    "sName": "Фомич",
+    "lastName": "Фомин",
+    "firstName": "Фома",
+    "secondName": "Фомич",
     "phone": "038-16-47"
   },
   {
     "id": "1416e358955",
-    "lName": "Кузьмин",
-    "fName": "Кузьма",
-    "sName": "Кузьмич",
+    "lastName": "Кузьмин",
+    "firstName": "Кузьма",
+    "secondName": "Кузьмич",
     "phone": "770-41-90"
   },
   {
     "id": "1001fbe68b2",
-    "lName": "Александров",
-    "fName": "Александр",
-    "sName": "Александрович",
+    "lastName": "Александров",
+    "firstName": "Александр",
+    "secondName": "Александрович",
     "phone": "883-21-56"
   },
   {
     "id": "2c32107361",
-    "lName": "Николаев",
-    "fName": "Николай",
-    "sName": "Николаевич",
+    "lastName": "Николаев",
+    "firstName": "Николай",
+    "secondName": "Николаевич",
     "phone": "584-90-09"
   },
   {
     "id": "9667fe8187",
-    "lName": "Сергеев",
-    "fName": "Сергей",
-    "sName": "Сергеевич",
+    "lastName": "Сергеев",
+    "firstName": "Сергей",
+    "secondName": "Сергеевич",
     "phone": "541-28-87"
   },
   {
     "id": "8c95366cde",
-    "lName": "Герасимов",
-    "fName": "Герасим",
-    "sName": "Герасимович",
+    "lastName": "Герасимов",
+    "firstName": "Герасим",
+    "secondName": "Герасимович",
     "phone": "469-72-53"
   }
 ]

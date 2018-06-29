@@ -1,5 +1,5 @@
 import React from 'react';
-import ContactList from '../components/contact-list/contact-list.jsx';
+import ContactList from '../contact-list/contact-list.jsx';
 
 export default function() {
 	return <ContactList />

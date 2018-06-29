@@ -12,8 +12,7 @@ class ContactList extends baseComponent {
         super(props);
 
         this.state = {
-            selectedElement: null,
-            selectedContact: null
+            selectedElement: null
         }
 
         this.toggleSelect = this.toggleSelect.bind(this);
@@ -48,14 +47,18 @@ class ContactList extends baseComponent {
         return (
         	<ul className="user-list">
         		{
-        			data.map(contact => (
-                		<li className="user-list__item" key={contact.id} onClick={this.toggleSelect(contact)}>
-                			<div className="user-info">
-                				<div className="name">{[contact.lName, contact.fName, contact.sName].join(' ')}</div>
-                				<div className="phone">{contact.phone}</div>
-                			</div>
-                		</li>
-    				))
+        			data.map(contact => {
+                        let selectedClassName = this.props.selectedContact === contact ? ' selected':'';
+
+                		return (
+                    		<li className={"user-list__item" + selectedClassName} key={contact.id} onClick={this.toggleSelect(contact)}>
+                    			<div className="user-info">
+                    				<div className="name">{[contact.lastName, contact.firstName, contact.secondName].join(' ')}</div>
+                    				<div className="phone">{contact.phone}</div>
+                    			</div>
+                    		</li>
+                		)
+    				})
         		}
         	</ul>
         )

@@ -1,23 +1,42 @@
 .user-list__item {
 
+	border-left: 4px solid transparent;
 	border-bottom: 1px solid #808080;
 	width: 100%;
 	height: 112px;
-	padding: 0 16px;
+	padding: 0 24px;
 	position: relative;
 	overflow: hidden;
 	cursor: pointer;
+	//transition: translate 0.5s;
 
 	&:hover {
+	    background: #303030;
+
+	    /*
+    	&:after {
+    		content: '';
+    		background: $color_secondary;
+    		display: block;
+    		width: 12px;
+    		height: 12px;
+    		position: absolute;
+    		left: 0;
+    		top: 50%;
+    		transform: translate(-50%, -50%) rotate(45deg);
+    	}
+    	*/
+
 		.name {
-			color: $color_primary_active;
+			//color: $color_primary_active;
 		}
 	}
 
 	&.selected {
-	    border-right: 4px solid $color_secondary;
 		background: $bg_nav_active;
+		border-left: 4px solid $color_secondary;
 
+		/*
 		&:after {
 			content: '';
 			background: $color_secondary;
@@ -25,10 +44,11 @@
 			width: 12px;
 			height: 12px;
 			position: absolute;
-			right: 0;
+			left: 0;
 			top: 50%;
-			transform: translate(50%, -50%) rotate(45deg);
+			transform: translate(-50%, -50%) rotate(45deg);
 		}
+		*/
 	}
 
 	&:last-child {
