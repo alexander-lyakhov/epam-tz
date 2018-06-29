@@ -6,8 +6,8 @@ import baseComponent from '../base-component.jsx';
 import './contact-list.scss';
 import data from './contact-list.json';
 
-class ContactList extends baseComponent
-{
+class ContactList extends baseComponent {
+
     constructor(props) {
         super(props);
 
@@ -26,9 +26,7 @@ class ContactList extends baseComponent
     toggleSelect(contact) {
 
     	return (e) => {
-    		console.log(this.state, e.currentTarget);
-
-    		let {selectedElement, selectedContact} = this.state;
+    		let {selectedElement} = this.state;
 
     		selectedElement && selectedElement.classList.remove('selected');
 
@@ -36,17 +34,13 @@ class ContactList extends baseComponent
 				selectedElement = e.currentTarget;
 				selectedElement.classList.add('selected');
 
-				selectedContact = contact;
-
 			} else {
 				selectedElement = null;
-				selectedContact = null;
 			}
 
-    		this.setState({
-    			selectedElement: selectedElement,
-    			selectedContact: selectedContact
-    		});
+    		this.setState({selectedElement: selectedElement});
+
+    		this.props.setContact(selectedElement ? contact:null);
     	}
     }
 
@@ -68,4 +62,18 @@ class ContactList extends baseComponent
     }
 }
 
-export default ContactList;
+function mapStateToProps(state) {
+	return {
+		selectedContact: state.selectedContact
+	}
+}
+
+function mapDispathToProps(dispatch) {
+	return {
+		setContact: function(contact) {
+			dispatch({type: 'CONTACT.SELECT', data: contact});
+		}
+	}
+}
+
+export default connect(mapStateToProps, mapDispathToProps)(ContactList);

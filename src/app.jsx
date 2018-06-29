@@ -1,28 +1,39 @@
 import React, {Fragment} from 'react';
-import {BrowserRouter, Route} from 'react-router-dom'
+import {Provider} from 'react-redux';
+
+import {HashRouter, Switch, Redirect, Route} from 'react-router-dom'
+
+import store from './store/store.js';
 
 import Header from './components/header/header.jsx';
-import MainLayout from './components/main-layout/main-layout.jsx';
+import Main from './components/main/main.jsx';
 
-import HomePage from './pages/home.jsx';
-import AboutPage from './pages/about.jsx';
+import Home from './pages/home.jsx';
+import NewContact from './pages/new-contact.jsx';
+import About from './pages/about.jsx';
 
 import logo from './assets/react-logo.png';
 
 
 export default function() {
 
-    let {browserHistory} = BrowserRouter;
+    let {browserHistory} = HashRouter;
 
     return (
-    	<BrowserRouter history={browserHistory}>
-        	<div>
-        	    <Header />
-        		<MainLayout>
-        			<Route exact path="/" component={HomePage} />
-        			<Route path="/about" component={AboutPage} />
-        		</MainLayout>
-        	</div>
-    	</BrowserRouter>
+        <Provider store={store}>
+        	<HashRouter history={browserHistory}>
+            	<Fragment>
+            	    <Header />
+            		<Main>
+            			<Switch>
+                			<Route exact path="/" component={Home} />
+                			<Route path="/new" component={NewContact} />
+                			<Route path="/about" component={About} />
+                			<Redirect from="*" to="/" />
+            			</Switch>
+            		</Main>
+            	</Fragment>
+        	</HashRouter>
+    	</Provider>
     )
 }

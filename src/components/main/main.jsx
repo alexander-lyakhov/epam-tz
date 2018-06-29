@@ -1,9 +1,7 @@
 ﻿import React from 'react';
-import './main-layout.scss';
+import './main.scss';
 
-import ContactList from '../contact-list/contact-list.jsx';
-
-class MainLayout extends React.Component
+class Main extends React.Component
 {
     render()
     {
@@ -15,4 +13,4 @@ class MainLayout extends React.Component
     }
 }
 
-export default MainLayout;
+export default Main;

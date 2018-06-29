@@ -1,0 +1,90 @@
+.contact-form {
+
+	font: 16px verdana;
+	display: block;
+	width: 100%;
+
+	fieldset {
+		background: #303030;
+		border-radius: 8px;
+		padding: 16px;
+
+		.row {
+			margin: 4px 0 16px;
+
+			label {
+				color: $color_secondary;
+				display: block;
+				height: 40px;
+				line-height: 40px;
+			}
+
+			.input-wrapper {
+				background: #000;
+				border: 1px solid #808080;
+				width: 100%;
+				height: 40px;
+				display: flex;
+				align-items: center;
+				padding: 0 8px;
+
+				.text-input {
+					font: 16px verdana;
+					color: #ccc;
+					background: #000;
+					border: none;
+					outline: none;
+					letter-spacing: 1px;
+					width: 100%;
+					height: 28px;
+				}
+			}
+		}
+	}
+
+	.btn-wrapper {
+		display: flex;
+		justify-content: center;
+		padding: 16px 0;
+	}
+
+	.btn {
+		font: 16px verdana;
+		color: #fff;
+		background: #0277BD;
+		border: none;
+		border-radius: 3px;
+		box-shadow: 0 3px 4px rgba(0, 0, 0, 0.25);
+		display: box;
+		min-width: 96px;
+		margin: 0 4px;
+		padding: 8px 8px;
+		cursor: pointer;
+
+		&:hover {
+			background: #1565C0;
+		}
+
+		&[disabled] {
+			color: $color_disabled;
+			background: #606060;
+			cursor: default;
+		}
+	}
+
+	.btn-confirm {
+		background: #388E3C;
+
+		&:hover {
+			background: #2E7D32;
+		}
+	}
+
+	.btn-warning {
+		background: #D32F2F;
+
+		&:hover {
+			background: #C62828;
+		}
+	}
+}
