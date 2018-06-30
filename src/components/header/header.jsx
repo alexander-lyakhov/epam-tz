@@ -8,16 +8,32 @@ function Header(props) {
 
     let isLinkDisabled = !props.selectedContact;
 
+    function clickHandler(e) {
+    	e.target.parentNode.hasAttribute('disabled') && e.preventDefault();
+    }
+
 	return (
         <header className="header">
             <nav>
             	<ul className="menu">
-            		<li className="menu__item"><NavLink exact to="/" className="menu__item-link" activeClassName="selected">Contacts</NavLink></li>
-            		<li className="menu__item"><NavLink to="/new" className="menu__item-link" activeClassName="selected">New</NavLink></li>
-            		<li className="menu__item" disabled={isLinkDisabled}><NavLink to="/edit" className="menu__item-link" activeClassName="selected">Edit</NavLink></li>
-            		<li className="menu__item" disabled={isLinkDisabled}><NavLink to="/delete" className="menu__item-link" activeClassName="selected">Delete</NavLink></li>
-            		<li className="menu__item" disabled={isLinkDisabled}><NavLink to="/history" className="menu__item-link" activeClassName="selected">History</NavLink></li>
-            		<li className="menu__item"><NavLink to="/about" className="menu__item-link" activeClassName="selected">About</NavLink></li>
+            		<li className="menu__item">
+            			<NavLink exact to="/" className="menu__item-link" activeClassName="selected" onClick={clickHandler}>Contacts</NavLink>
+            		</li>
+            		<li className="menu__item">
+            			<NavLink to="/new" className="menu__item-link" activeClassName="selected" onClick={clickHandler}>New</NavLink>
+            		</li>
+            		<li className="menu__item" disabled={isLinkDisabled}>
+            			<NavLink to="/edit" className="menu__item-link" activeClassName="selected" onClick={clickHandler}>Edit</NavLink>
+            		</li>
+            		<li className="menu__item" disabled={isLinkDisabled}>
+            			<NavLink to="/delete" className="menu__item-link" activeClassName="selected" onClick={clickHandler}>Delete</NavLink>
+            		</li>
+            		<li className="menu__item" disabled={isLinkDisabled}>
+            			<NavLink to="/history" className="menu__item-link" activeClassName="selected" onClick={clickHandler}>History</NavLink>
+            		</li>
+            		<li className="menu__item">
+            			<NavLink to="/about" className="menu__item-link" activeClassName="selected" onClick={clickHandler}>About</NavLink>
+            		</li>
             	</ul>
             </nav>
         </header>

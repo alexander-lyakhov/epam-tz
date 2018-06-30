@@ -16,21 +16,28 @@ class ContactForm extends baseComponent
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleMaskChange = this.handleMaskChange.bind(this);
         this.checkFormState = this.checkFormState.bind(this);
 
         this.contactForm = React.createRef()
+
+        this.phoneRegexp = /^\d{3}-\d{2}-\d{2}$/;
     }
 
     componentDidMount() {
-    	this.fields = this.contactForm.current.querySelectorAll('[type="text"]');
+
+    	this.arrFields = [...this.contactForm.current.querySelectorAll('[type="text"]')];
+    	this.mapFields = {};
+
+    	this.arrFields.forEach(el => this.mapFields[el.name] = el);
 
     	this.checkFormState();
     }
 
     checkFormState() {
 
-    	let isButtonsEnabled = [].every .call(this.fields, item => item.value.trim() !== '');
+    	let fieldsNotEmpty = this.arrFields.every(item => item.value.trim() !== '');
+
+    	let isButtonsEnabled = fieldsNotEmpty & this.phoneRegexp.test(this.mapFields.phone.value);
 
     	if (isButtonsEnabled !== this.state.isButtonsEnabled) {
     		this.setState({isButtonsEnabled: isButtonsEnabled});
@@ -39,21 +46,12 @@ class ContactForm extends baseComponent
 
     handleSubmit(e) {
     	e.preventDefault();
+
     	console.log('handleSubmit', e.target)
 
     	let form = e.target;
 
     	console.log(form.elements)
-
-    	for (var field in form) {
-    	    if (form.hasOwnProperty(field)) {
-	    		console.log(form[field])
-    		}
-    	}
-    }
-
-    handleMaskChange(e) {
-    	console.log(e.target.value)
     }
 
     render() {
@@ -66,7 +64,7 @@ class ContactForm extends baseComponent
         				<label>First name:</label>
 
         				<div className="input-wrapper">
-        					<input type="text" data-type="text-field" className="text-input" autoFocus defaultValue={firstName} onChange={this.checkFormState} />
+        					<input type="text" name="firstName" className="text-input" autoFocus defaultValue={firstName} onChange={this.checkFormState} />
         				</div>
         			</div>
 
@@ -74,7 +72,7 @@ class ContactForm extends baseComponent
         				<label>Second name:</label>
 
         				<div className="input-wrapper">
-        					<input type="text" data-type="text-field" className="text-input"  defaultValue={secondName} onChange={this.checkFormState} />
+        					<input type="text" name="secondName" className="text-input"  defaultValue={secondName} onChange={this.checkFormState} />
 	        			</div>
         			</div>
 
@@ -82,7 +80,7 @@ class ContactForm extends baseComponent
         				<label>Last name:</label>
 
         				<div className="input-wrapper">
-        					<input type="text" data-type="text-field" className="text-input"  defaultValue={lastName} onChange={this.checkFormState} />
+        					<input type="text" name="lastName" className="text-input"  defaultValue={lastName} onChange={this.checkFormState} />
                     	</div>
         			</div>
 
@@ -90,14 +88,13 @@ class ContactForm extends baseComponent
         				<label>Phone:</label>
 
         				<div className="input-wrapper">
-        					<InputMask className="text-input" mask="999-99-99" alwaysShowMask onChange={this.handleMaskChange} defaultValue={phone} />
+        					<InputMask type="text" name="phone" className="text-input" mask="999-99-99" alwaysShowMask onChange={this.checkFormState} defaultValue={phone} />
         				</div>
         			</div>
         		</fieldset>
 
         		<div className="btn-wrapper">
         			<input className="btn btn-confirm" type='submit' value='Save' disabled={!this.state.isButtonsEnabled} />
-        			<input className="btn btn-warning" type='reset' value='Reset' />
         		</div>
     		</form>
     	)

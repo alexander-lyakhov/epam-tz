@@ -11,6 +11,7 @@ import Main from './components/main/main.jsx';
 import Home from './components/pages/home.jsx';
 import NewContact from './components/pages/new-contact.jsx';
 import EditContact from './components/pages/edit-contact.jsx';
+import History from './components/pages/history.jsx';
 import About from './components/pages/about.jsx';
 
 export default function() {
@@ -27,6 +28,7 @@ export default function() {
                 			<Route exact path="/" component={Home} />
                 			<Route path="/new" component={NewContact} />
                 			<Route path="/edit" component={EditContact} />
+                			<Route path="/history" component={History} />
                 			<Route path="/about" component={About} />
                 			<Redirect from="*" to="/" />
             			</Switch>

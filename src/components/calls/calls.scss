@@ -1,0 +1,34 @@
+.history-row {
+
+	font: 24px helvetica;
+	background: #303030;
+	border-radius: 8px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin: 4px 0;
+	padding: 12px 0;
+
+    .day-shift {
+    	font-size: 22px;
+    	color: #999;
+    	border-right: 1px solid #808080;
+    	text-align: right;
+    	letter-spacing: 1px;
+    	padding: 0 8px;
+    	width: 50%;
+    }
+
+    .times {
+    	font: 16px lucida console;
+    	color: $color_secondary;
+    	line-height: 24px;
+    	letter-spacing: 1px;
+    	width: 50%;
+    	padding: 0 8px;
+
+    	li:nth-child(even) {
+    		color: #c9c;
+    	}
+    }
+}
