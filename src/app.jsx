@@ -8,7 +8,7 @@ import store from './store/store.js';
 import Header from './components/header/header.jsx';
 import Main from './components/main/main.jsx';
 
-import Home from './components/pages/home.jsx';
+import Contacts from './components/pages/contacts.jsx';
 import NewContact from './components/pages/new-contact.jsx';
 import EditContact from './components/pages/edit-contact.jsx';
 import History from './components/pages/history.jsx';
@@ -20,15 +20,15 @@ export default function() {
 
     return (
         <Provider store={store}>
-        	<HashRouter history={browserHistory}>
+        	<HashRouter history={browserHistory} hashType="noslash">
             	<Fragment>
             	    <Header />
             		<Main>
             			<Switch>
-                			<Route exact path="/" component={Home} />
+                			<Route exact path="/" component={Contacts} />
                 			<Route path="/new" component={NewContact} />
                 			<Route path="/edit" component={EditContact} />
-                			<Route path="/history" component={History} />
+	                		<Route path="/history/:id" component={History} />
                 			<Route path="/about" component={About} />
                 			<Redirect from="*" to="/" />
             			</Switch>

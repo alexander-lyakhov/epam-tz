@@ -1,10 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+import axios from 'axios';
+
 import baseComponent from '../base-component.jsx';
 
 import './contact-list.scss';
-import data from './contact-list.json';
+//import data from './contact-list.json';
 
 class ContactList extends baseComponent {
 
@@ -16,10 +18,28 @@ class ContactList extends baseComponent {
         }
 
         this.toggleSelect = this.toggleSelect.bind(this);
+
+        this.data = [];
     }
 
     componentDidMount() {
-    	console.log('data:', data);
+        this.axios = axios;
+
+        axios({
+        	method: 'get',
+        	url: 'https://my-json-server.typicode.com/alexander-lyakhov/epam-tz/contacts'
+        	//params: {_page: 1, _limit: 3}
+        })
+
+        .then(response => {
+        	console.log('data ->', response.data);
+        	this.props.populateContacts(response.data);
+        })
+
+        .catch(error => {
+        	console.log('error ->', error)
+        	this.props.populateContacts([]);
+        })
     }
 
     toggleSelect(contact) {
@@ -44,10 +64,15 @@ class ContactList extends baseComponent {
     }
 
     render() {
+        let {contacts} = this.props;
+
+        console.log('ContactList: render');
+        console.log('contacts', contacts);
+
         return (
         	<ul className="user-list">
         		{
-        			data.map(contact => {
+        			contacts.map(contact => {
                         let selectedClassName = this.props.selectedContact === contact ? ' selected':'';
 
                 		return (
@@ -67,6 +92,7 @@ class ContactList extends baseComponent {
 
 function mapStateToProps(state) {
 	return {
+	    contacts: state.contacts,
 		selectedContact: state.selectedContact
 	}
 }
@@ -75,6 +101,9 @@ function mapDispathToProps(dispatch) {
 	return {
 		setContact: function(contact) {
 			dispatch({type: 'CONTACT.SELECT', data: contact});
+		},
+		populateContacts: function(contacts) {
+			dispatch({type: 'CONTACTS.POPULATE', data: contacts})
 		}
 	}
 }

@@ -4,40 +4,34 @@
 	display: block;
 	width: 100%;
 
-	fieldset {
-		background: #303030;
-		border-radius: 8px;
-		padding: 16px;
+	.row {
+		margin: 4px 0 16px;
 
-		.row {
-			margin: 4px 0 16px;
+		label {
+			color: $color_primary;
+			display: block;
+			height: 40px;
+			line-height: 40px;
+		}
 
-			label {
-				color: $color_primary;
-				display: block;
-				height: 40px;
-				line-height: 40px;
-			}
+		.input-wrapper {
+			background: #000;
+			border: 1px solid #808080;
+			width: 100%;
+			height: 40px;
+			display: flex;
+			align-items: center;
+			padding: 0 8px;
 
-			.input-wrapper {
+			.text-input {
+				font: 16px verdana;
+				color: $color_secondary;
 				background: #000;
-				border: 1px solid #808080;
+				border: none;
+				outline: none;
+				letter-spacing: 1px;
 				width: 100%;
-				height: 40px;
-				display: flex;
-				align-items: center;
-				padding: 0 8px;
-
-				.text-input {
-					font: 16px verdana;
-					color: $color_secondary;
-					background: #000;
-					border: none;
-					outline: none;
-					letter-spacing: 1px;
-					width: 100%;
-					height: 28px;
-				}
+				height: 28px;
 			}
 		}
 	}

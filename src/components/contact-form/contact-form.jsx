@@ -59,7 +59,7 @@ class ContactForm extends baseComponent
 
         return (
         	<form className="contact-form" onSubmit={this.handleSubmit} ref={this.contactForm}>
-        		<fieldset>
+        		<fieldset className="section">
         			<div className="row">
         				<label>First name:</label>
 
