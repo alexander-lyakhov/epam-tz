@@ -1,5 +1,4 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import InputMask from 'react-input-mask';
 
 import baseComponent from '../base-component.jsx';
@@ -25,19 +24,19 @@ class ContactForm extends baseComponent
 
     componentDidMount() {
 
-    	this.arrFields = [...this.contactForm.current.querySelectorAll('[type="text"]')];
-    	this.mapFields = {};
+    	this.fields = [...this.contactForm.current.querySelectorAll('[type="text"]')];
+    	this.formData = {};
 
-    	this.arrFields.forEach(el => this.mapFields[el.name] = el);
+    	this.fields.forEach(el => this.formData[el.name] = el);
 
     	this.checkFormState();
     }
 
     checkFormState() {
 
-    	let fieldsNotEmpty = this.arrFields.every(item => item.value.trim() !== '');
+    	let fieldsNotEmpty = this.fields.every(item => item.value.trim() !== '');
 
-    	let isButtonsEnabled = fieldsNotEmpty & this.phoneRegexp.test(this.mapFields.phone.value);
+    	let isButtonsEnabled = fieldsNotEmpty & this.phoneRegexp.test(this.formData.phone.value);
 
     	if (isButtonsEnabled !== this.state.isButtonsEnabled) {
     		this.setState({isButtonsEnabled: isButtonsEnabled});
@@ -47,11 +46,12 @@ class ContactForm extends baseComponent
     handleSubmit(e) {
     	e.preventDefault();
 
-    	console.log('handleSubmit', e.target)
-
-    	let form = e.target;
-
-    	console.log(form.elements)
+    	this.emit('onSave', {
+    	    lastName: this.formData.lastName.value,
+    		firstName: this.formData.firstName.value,
+    		secondName: this.formData.secondName.value,
+    		phone: this.formData.phone.value
+    	});
     }
 
     render() {

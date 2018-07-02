@@ -18,34 +18,34 @@ class ContactList extends baseComponent {
         }
 
         this.toggleSelect = this.toggleSelect.bind(this);
-
-        this.data = [];
     }
 
     componentDidMount() {
-        this.axios = axios;
+        window.axios = axios;
 
-        axios({
-        	method: 'get',
-        	url: 'https://my-json-server.typicode.com/alexander-lyakhov/epam-tz/contacts'
-        	//params: {_page: 1, _limit: 3}
-        })
+        if (!this.props.loaded) {
+            axios({
+            	method: 'get',
+            	url: this.props.url
+            })
 
-        .then(response => {
-        	console.log('data ->', response.data);
-        	this.props.populateContacts(response.data);
-        })
+            .then(response => {
+            	console.log('data ->', response.data);
+            	this.props.populateContacts(response.data);
+            })
 
-        .catch(error => {
-        	console.log('error ->', error)
-        	this.props.populateContacts([]);
-        })
+            .catch(error => {
+            	console.log('error ->', error)
+            	this.props.populateContacts([]);
+            })
+    	}
     }
 
     toggleSelect(contact) {
 
     	return (e) => {
     		let {selectedElement} = this.state;
+    		let {selectedContact} = this.props;
 
     		selectedElement && selectedElement.classList.remove('selected');
 
@@ -65,9 +65,6 @@ class ContactList extends baseComponent {
 
     render() {
         let {contacts} = this.props;
-
-        console.log('ContactList: render');
-        console.log('contacts', contacts);
 
         return (
         	<ul className="user-list">
@@ -92,8 +89,10 @@ class ContactList extends baseComponent {
 
 function mapStateToProps(state) {
 	return {
+	    loaded: state.loaded,
 	    contacts: state.contacts,
-		selectedContact: state.selectedContact
+		selectedContact: state.selectedContact,
+		url: state.url
 	}
 }
 

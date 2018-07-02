@@ -19,6 +19,10 @@ export default function() {
         		</ul>
     		</div>
 
+    		<div className="section">
+    			Front-end part should be developed as SPA with ES6, React and Redux. Back-end API should be mocked. (json-server)
+    		</div>
+
 		</Fragment>
 	)
 }
