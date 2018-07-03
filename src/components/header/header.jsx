@@ -2,12 +2,13 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 
+import icons from './icons.jsx';
 import './header.scss';
 
 function Header(props) {
 
-    let selectedContact = props.selectedContact || {};
-    let isLinkDisabled = !selectedContact.id;
+    let selectedContactID = props.selectedContactID || '';
+    let isLinkDisabled = !selectedContactID;
 
     function clickHandler(e) {
     	e.target.parentNode.hasAttribute('disabled') && e.preventDefault();
@@ -18,27 +19,45 @@ function Header(props) {
             <nav>
             	<ul className="menu">
             		<li className="menu__item">
-            			<NavLink exact to="/" className="menu__item-link" activeClassName="selected" onClick={clickHandler}>Contacts</NavLink>
+            			<NavLink exact to="/" className="menu__item-link" activeClassName="selected" onClick={clickHandler}>
+            			    {icons.users}
+            				<span>Contacts</span>
+            			</NavLink>
             		</li>
 
             		<li className="menu__item">
-            			<NavLink to="/new" className="menu__item-link" activeClassName="selected" onClick={clickHandler}>New</NavLink>
+            			<NavLink to="/new" className="menu__item-link" activeClassName="selected" onClick={clickHandler}>
+            			    {icons.add}
+            				<span>New</span>
+            			</NavLink>
             		</li>
 
             		<li className="menu__item" disabled={isLinkDisabled}>
-            			<NavLink to="/edit" className="menu__item-link" activeClassName="selected" onClick={clickHandler}>Edit</NavLink>
+            			<NavLink to="/edit" className="menu__item-link" activeClassName="selected" onClick={clickHandler}>
+            			    {icons.edit}
+            				<span>Edit</span>
+            			</NavLink>
             		</li>
 
             		<li className="menu__item" disabled={isLinkDisabled}>
-            			<NavLink to="/delete" className="menu__item-link" activeClassName="selected" onClick={clickHandler}>Delete</NavLink>
+            			<NavLink to="/delete" className="menu__item-link" activeClassName="selected" onClick={clickHandler}>
+            			    {icons.remove}
+            				<span>Delete</span>
+            			</NavLink>
             		</li>
 
             		<li className="menu__item" disabled={isLinkDisabled}>
-            			<NavLink to={"/history/" + selectedContact.id} className="menu__item-link" activeClassName="selected" onClick={clickHandler}>History</NavLink>
+            			<NavLink to={"/history/" + selectedContactID} className="menu__item-link" activeClassName="selected" onClick={clickHandler}>
+            			    {icons.history}
+            				<span>History</span>
+            			</NavLink>
             		</li>
 
             		<li className="menu__item">
-            			<NavLink to="/about" className="menu__item-link" activeClassName="selected" onClick={clickHandler}>About</NavLink>
+            			<NavLink to="/about" className="menu__item-link" activeClassName="selected" onClick={clickHandler}>
+            			    {icons.about}
+            				<span>About</span>
+            			</NavLink>
             		</li>
             	</ul>
             </nav>
@@ -48,7 +67,7 @@ function Header(props) {
 
 function mapStateToProps(state) {
 	return {
-		selectedContact: state.selectedContact
+		selectedContactID: state.selectedContactID
 	}
 }
 

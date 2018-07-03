@@ -5,22 +5,33 @@ import {Redirect} from 'react-router';
 import ContactForm from '../contact-form/contact-form.jsx';
 
 function EditContact(props) {
-    let {firstName, secondName, lastName, phone} = props.selectedContact || {};
 
-    console.log('EditContact', props)
+    let selectedContact = props.contacts.find(item => item.id === props.selectedContactID) || {};
 
-	if (!props.selectedContact) {
+    let {id, firstName, secondName, lastName, phone} = selectedContact;
+
+    let updateContact = (contact) => {
+
+    	axios.patch(props.url + id, {params: contact}).then(response => {
+    		props.updateContact(response.data);
+    		location.href="/#";
+    	});
+    }
+
+	if (!props.selectedContactID) {
 		return <Redirect to="/" />
 
 	} else {
 		return (
     		<Fragment>
     			<h2>Edit contact</h2>
+
     			<ContactForm
     				firstName={firstName}
     				secondName={secondName}
     				lastName={lastName}
     				phone={phone}
+    				onSave={updateContact}
     			/>
     		</Fragment>
 		)
@@ -29,8 +40,18 @@ function EditContact(props) {
 
 function mapStateToProps(state) {
 	return {
-		selectedContact: state.selectedContact
+		url: state.url,
+		selectedContactID: state.selectedContactID,
+		contacts: state.contacts
 	}
 }
 
-export default connect(mapStateToProps)(EditContact);
+function mapDispatchToProps(dispatch) {
+	return {
+		updateContact: function(contact) {
+			dispatch({type: 'CONTACT.UPDATE', data: contact});
+		}
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditContact);

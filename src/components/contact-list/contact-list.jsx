@@ -3,12 +3,9 @@ import {connect} from 'react-redux';
 
 import axios from 'axios';
 
-import baseComponent from '../base-component.jsx';
-
 import './contact-list.scss';
-//import data from './contact-list.json';
 
-class ContactList extends baseComponent {
+class ContactList extends React.Component {
 
     constructor(props) {
         super(props);
@@ -24,20 +21,10 @@ class ContactList extends baseComponent {
         window.axios = axios;
 
         if (!this.props.loaded) {
-            axios({
-            	method: 'get',
-            	url: this.props.url
-            })
-
-            .then(response => {
-            	console.log('data ->', response.data);
-            	this.props.populateContacts(response.data);
-            })
-
-            .catch(error => {
-            	console.log('error ->', error)
-            	this.props.populateContacts([]);
-            })
+            axios
+                .get(this.props.url)
+                .then(response => this.props.populateContacts(response.data))
+    			.catch(error => this.props.populateContacts([]))
     	}
     }
 
@@ -45,7 +32,7 @@ class ContactList extends baseComponent {
 
     	return (e) => {
     		let {selectedElement} = this.state;
-    		let {selectedContact} = this.props;
+    		let {selectedContactID} = this.props;
 
     		selectedElement && selectedElement.classList.remove('selected');
 
@@ -66,24 +53,30 @@ class ContactList extends baseComponent {
     render() {
         let {contacts} = this.props;
 
-        return (
-        	<ul className="user-list">
-        		{
-        			contacts.map(contact => {
-                        let selectedClassName = this.props.selectedContact === contact ? ' selected':'';
+        if (!this.props.loaded) {
+        	return <h3 className="section loading">Loading...</h3>
 
-                		return (
-                    		<li className={"user-list__item" + selectedClassName} key={contact.id} onClick={this.toggleSelect(contact)}>
-                    			<div className="user-info">
-                    				<div className="name">{[contact.lastName, contact.firstName, contact.secondName].join(' ')}</div>
-                    				<div className="phone">{contact.phone}</div>
-                    			</div>
-                    		</li>
-                		)
-    				})
-        		}
-        	</ul>
-        )
+        } else {
+
+            return (
+            	<ul className="user-list">
+            		{
+            			contacts.map(contact => {
+                            let selectedClassName = this.props.selectedContactID === contact.id ? ' selected':'';
+
+                    		return (
+                        		<li className={"user-list__item" + selectedClassName} key={contact.id} onClick={this.toggleSelect(contact)}>
+                        			<div className="user-info">
+                        				<div className="name">{[contact.lastName, contact.firstName, contact.secondName].join(' ')}</div>
+                        				<div className="phone">{contact.phone}</div>
+                        			</div>
+                        		</li>
+                    		)
+        				})
+            		}
+            	</ul>
+            )
+        }
     }
 }
 
@@ -91,7 +84,7 @@ function mapStateToProps(state) {
 	return {
 	    loaded: state.loaded,
 	    contacts: state.contacts,
-		selectedContact: state.selectedContact,
+		selectedContactID: state.selectedContactID,
 		url: state.url
 	}
 }

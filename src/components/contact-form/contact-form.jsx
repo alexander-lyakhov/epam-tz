@@ -1,12 +1,9 @@
 import React from 'react';
 import InputMask from 'react-input-mask';
 
-import baseComponent from '../base-component.jsx';
-
 import './contact-form.scss';
 
-class ContactForm extends baseComponent
-{
+class ContactForm extends React.Component {
     constructor(props) {
         super(props);
 
@@ -46,7 +43,7 @@ class ContactForm extends baseComponent
     handleSubmit(e) {
     	e.preventDefault();
 
-    	this.emit('onSave', {
+    	this.props.onSave({
     	    lastName: this.formData.lastName.value,
     		firstName: this.formData.firstName.value,
     		secondName: this.formData.secondName.value,

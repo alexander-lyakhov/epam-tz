@@ -9,7 +9,7 @@ function NewContact(props) {
     let saveContact = (data) => {
 
     	let contact = Object.assign(
-    		{id: Math.floor((Math.random() * new Date().getTime())).toString(16)},
+    		{id: app.utils.uid()},
     		data,
     		{history: []}
     	);

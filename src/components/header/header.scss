@@ -29,14 +29,20 @@ nav {
 
 			.menu__item-link {
 
-				font-size: 16px;
+				font-size: 13px;
 				color: $color_route;
 				text-decoration: none;
 				display: flex;
+				flex-direction: column;
 				justify-content: center;
 				align-items: center;
 				height: 100%;
 				padding: 0 16px;
+
+				svg {
+					fill: #ccc;
+					margin: 0 0 4px 0;
+				}
 
 				&.selected {
 					border-bottom: 2px solid #c96;
@@ -56,6 +62,10 @@ nav {
 				.menu__item-link {
 
 						color: $color_disabled;
+
+        				svg {
+        					fill: $color_disabled
+        				}
 
 						&:hover {
 							background: $bg_nav;
