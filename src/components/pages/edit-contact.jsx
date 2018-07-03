@@ -14,7 +14,7 @@ function EditContact(props) {
 
     	axios.patch(props.url + id, {params: contact}).then(response => {
     		props.updateContact(response.data);
-    		location.href="/#";
+    		location.hash = '#';
     	});
     }
 
