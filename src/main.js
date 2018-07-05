@@ -7,6 +7,6 @@ import './styles/reset.css';
 import './styles/global.scss';
 
 ReactDOM.render(
-    <App />,
-    document.querySelector('#app')
+	<App />,
+	document.querySelector('#app')
 )

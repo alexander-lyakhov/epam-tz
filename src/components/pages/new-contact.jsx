@@ -6,19 +6,19 @@ import ContactForm from '../contact-form/contact-form.jsx';
 
 function NewContact(props) {
 
-    let saveContact = (data) => {
+	let saveContact = (data) => {
 
-    	let contact = Object.assign(
-    		{id: app.utils.uid()},
-    		data,
-    		{history: []}
-    	);
+		let contact = Object.assign(
+			{id: app.utils.uid()},
+			data,
+			{history: []}
+		);
 
-    	axios.post(props.url, {params: contact}).then(response => {
-    		props.saveContact(contact);
-    		location.href="/#";
-    	});
-    }
+		axios.post(props.url, {params: contact}).then(response => {
+			props.saveContact(contact);
+			location.href="/#";
+		});
+	}
 
 	return (
 		<Fragment>
@@ -37,7 +37,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 	return {
 		saveContact: function(contact) {
-			dispatch({type: 'CONTACT.CREATE', data: contact});
+			dispatch({type: 'CONTACT.CREATE', contact: contact});
 		}
 	}
 }

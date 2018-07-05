@@ -26,7 +26,7 @@ class Calls extends React.Component {
 
 			.then(response => {
 				this.isLoading = false;
-   				this.setState({contact: app.utils.getContact(contacts, selectedContactID) || response.data[0] || {}});
+					this.setState({contact: app.utils.getContact(contacts, selectedContactID) || response.data[0] || {}});
 			})
 
 			.catch(error => {
@@ -61,11 +61,11 @@ class Calls extends React.Component {
 										{item.times.map((time, index) => <li key={index}>{time}</li>)}
 									</ul>
 								</div>
-		   					)
-	   					})
+								)
+							})
 					}
 				</div>
-		   	)
+			)
 		}
 	}
 }

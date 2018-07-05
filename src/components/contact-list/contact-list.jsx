@@ -7,83 +7,84 @@ import './contact-list.scss';
 
 class ContactList extends React.Component {
 
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.state = {
-            selectedElement: null
-        }
+		this.state = {
+			selectedElement: null
+		}
 
-        this.toggleSelect = this.toggleSelect.bind(this);
-    }
+		this.toggleSelect = this.toggleSelect.bind(this);
+	}
 
-    componentDidMount() {
-        window.axios = axios;
+	componentDidMount() {
+		window.axios = axios;
 
-        if (!this.props.loaded) {
-            axios
-                .get(this.props.url)
-                .then(response => this.props.populateContacts(response.data))
-    			.catch(error => this.props.populateContacts([]))
-    	}
-    }
+		if (!this.props.loaded) {
+			axios
+				.get(this.props.url)
+				.then(response => this.props.populateContacts(response.data))
+	 			.catch(error => this.props.populateContacts([]))
+		}
+	}
 
-    toggleSelect(contact) {
+	toggleSelect(contact) {
+		return (e) => {
 
-    	return (e) => {
-    		let {selectedElement} = this.state;
-    		let {selectedContactID} = this.props;
+			let {selectedElement} = this.state;
+		 	let {selectedContactID} = this.props;
 
-    		selectedElement && selectedElement.classList.remove('selected');
+		 	if (e.currentTarget.classList.contains('selected')) {
+		 		e.currentTarget.classList.remove('selected');
 
-			if (selectedElement !== e.currentTarget) {
-				selectedElement = e.currentTarget;
-				selectedElement.classList.add('selected');
+		 		this.setState({selectedElement: null});
+		 		this.props.setContact('');
 
-			} else {
-				selectedElement = null;
-			}
+		 	} else {
+		 		selectedElement && selectedElement.classList.remove('selected');
+		 		selectedElement = e.currentTarget;
+		 		selectedElement.classList.add('selected');
 
-    		this.setState({selectedElement: selectedElement});
+		 		this.setState({selectedElement: selectedElement});
+		 		this.props.setContact(contact.id);
+		 	}
+	 	}
+	 }
 
-    		this.props.setContact(selectedElement ? contact:null);
-    	}
-    }
+	render() {
+		let {contacts} = this.props;
 
-    render() {
-        let {contacts} = this.props;
+		if (!this.props.loaded) {
+			return <h3 className="section loading">Loading...</h3>
 
-        if (!this.props.loaded) {
-        	return <h3 className="section loading">Loading...</h3>
+		} else {
 
-        } else {
+			return (
+				<ul className="user-list">
+					{
+						contacts.map(contact => {
+							let selectedClassName = this.props.selectedContactID === contact.id ? ' selected':'';
 
-            return (
-            	<ul className="user-list">
-            		{
-            			contacts.map(contact => {
-                            let selectedClassName = this.props.selectedContactID === contact.id ? ' selected':'';
-
-                    		return (
-                        		<li className={"user-list__item" + selectedClassName} key={contact.id} onClick={this.toggleSelect(contact)}>
-                        			<div className="user-info">
-                        				<div className="name">{[contact.lastName, contact.firstName, contact.secondName].join(' ')}</div>
-                        				<div className="phone">{contact.phone}</div>
-                        			</div>
-                        		</li>
-                    		)
-        				})
-            		}
-            	</ul>
-            )
-        }
-    }
+						  	return (
+								<li className={"user-list__item" + selectedClassName} key={contact.id} onClick={this.toggleSelect(contact)}>
+									<div className="user-info">
+										<div className="name">{[contact.lastName, contact.firstName, contact.secondName].join(' ')}</div>
+											<div className="phone">{contact.phone}</div>
+										</div>
+									</li>
+					  		)
+		  				})
+					}
+				</ul>
+			)
+		}
+	}
 }
 
 function mapStateToProps(state) {
 	return {
-	    loaded: state.loaded,
-	    contacts: state.contacts,
+		loaded: state.loaded,
+		contacts: state.contacts,
 		selectedContactID: state.selectedContactID,
 		url: state.url
 	}
@@ -91,8 +92,8 @@ function mapStateToProps(state) {
 
 function mapDispathToProps(dispatch) {
 	return {
-		setContact: function(contact) {
-			dispatch({type: 'CONTACT.SELECT', data: contact});
+		setContact: function(selectedContactID) {
+			dispatch({type: 'CONTACT.SELECT', selectedContactID: selectedContactID});
 		},
 		populateContacts: function(contacts) {
 			dispatch({type: 'CONTACTS.POPULATE', data: contacts})

@@ -4781,7 +4781,7 @@ module.exports = Cancel;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -4807,153 +4807,153 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var ContactForm = function (_React$Component) {
-    _inherits(ContactForm, _React$Component);
+	_inherits(ContactForm, _React$Component);
 
-    function ContactForm(props) {
-        _classCallCheck(this, ContactForm);
+	function ContactForm(props) {
+		_classCallCheck(this, ContactForm);
 
-        var _this = _possibleConstructorReturn(this, (ContactForm.__proto__ || Object.getPrototypeOf(ContactForm)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (ContactForm.__proto__ || Object.getPrototypeOf(ContactForm)).call(this, props));
 
-        _this.state = {
-            isButtonsEnabled: false
-        };
+		_this.state = {
+			isButtonsEnabled: false
+		};
 
-        _this.handleSubmit = _this.handleSubmit.bind(_this);
-        _this.checkFormState = _this.checkFormState.bind(_this);
+		_this.handleSubmit = _this.handleSubmit.bind(_this);
+		_this.checkFormState = _this.checkFormState.bind(_this);
 
-        _this.contactForm = _react2.default.createRef();
+		_this.contactForm = _react2.default.createRef();
 
-        _this.phoneRegexp = /^\d{3}-\d{2}-\d{2}$/;
-        return _this;
-    }
+		_this.phoneRegexp = /^\d{3}-\d{2}-\d{2}$/;
+		return _this;
+	}
 
-    _createClass(ContactForm, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            var _this2 = this;
+	_createClass(ContactForm, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var _this2 = this;
 
-            this.fields = [].concat(_toConsumableArray(this.contactForm.current.querySelectorAll('[type="text"]')));
-            this.formData = {};
+			this.fields = [].concat(_toConsumableArray(this.contactForm.current.querySelectorAll('[type="text"]')));
+			this.formData = {};
 
-            this.fields.forEach(function (el) {
-                return _this2.formData[el.name] = el;
-            });
+			this.fields.forEach(function (el) {
+				return _this2.formData[el.name] = el;
+			});
 
-            this.checkFormState();
-        }
-    }, {
-        key: 'checkFormState',
-        value: function checkFormState() {
+			this.checkFormState();
+		}
+	}, {
+		key: 'checkFormState',
+		value: function checkFormState() {
 
-            var fieldsNotEmpty = this.fields.every(function (item) {
-                return item.value.trim() !== '';
-            });
+			var fieldsNotEmpty = this.fields.every(function (item) {
+				return item.value.trim() !== '';
+			});
 
-            var isButtonsEnabled = fieldsNotEmpty & this.phoneRegexp.test(this.formData.phone.value);
+			var isButtonsEnabled = fieldsNotEmpty & this.phoneRegexp.test(this.formData.phone.value);
 
-            if (isButtonsEnabled !== this.state.isButtonsEnabled) {
-                this.setState({ isButtonsEnabled: isButtonsEnabled });
-            }
-        }
-    }, {
-        key: 'handleSubmit',
-        value: function handleSubmit(e) {
-            e.preventDefault();
+			if (isButtonsEnabled !== this.state.isButtonsEnabled) {
+				this.setState({ isButtonsEnabled: isButtonsEnabled });
+			}
+		}
+	}, {
+		key: 'handleSubmit',
+		value: function handleSubmit(e) {
+			e.preventDefault();
 
-            this.props.onSave({
-                lastName: this.formData.lastName.value,
-                firstName: this.formData.firstName.value,
-                secondName: this.formData.secondName.value,
-                phone: this.formData.phone.value
-            });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var _props = this.props,
-                _props$firstName = _props.firstName,
-                firstName = _props$firstName === undefined ? '' : _props$firstName,
-                _props$secondName = _props.secondName,
-                secondName = _props$secondName === undefined ? '' : _props$secondName,
-                _props$lastName = _props.lastName,
-                lastName = _props$lastName === undefined ? '' : _props$lastName,
-                _props$phone = _props.phone,
-                phone = _props$phone === undefined ? '' : _props$phone;
+			this.props.onSave({
+				lastName: this.formData.lastName.value,
+				firstName: this.formData.firstName.value,
+				secondName: this.formData.secondName.value,
+				phone: this.formData.phone.value
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _props = this.props,
+			    _props$firstName = _props.firstName,
+			    firstName = _props$firstName === undefined ? '' : _props$firstName,
+			    _props$secondName = _props.secondName,
+			    secondName = _props$secondName === undefined ? '' : _props$secondName,
+			    _props$lastName = _props.lastName,
+			    lastName = _props$lastName === undefined ? '' : _props$lastName,
+			    _props$phone = _props.phone,
+			    phone = _props$phone === undefined ? '' : _props$phone;
 
 
-            return _react2.default.createElement(
-                'form',
-                { className: 'contact-form', onSubmit: this.handleSubmit, ref: this.contactForm },
-                _react2.default.createElement(
-                    'fieldset',
-                    { className: 'section' },
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'row' },
-                        _react2.default.createElement(
-                            'label',
-                            null,
-                            'First name:'
-                        ),
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'input-wrapper' },
-                            _react2.default.createElement('input', { type: 'text', name: 'firstName', className: 'text-input', autoFocus: true, defaultValue: firstName, onChange: this.checkFormState })
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'row' },
-                        _react2.default.createElement(
-                            'label',
-                            null,
-                            'Second name:'
-                        ),
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'input-wrapper' },
-                            _react2.default.createElement('input', { type: 'text', name: 'secondName', className: 'text-input', defaultValue: secondName, onChange: this.checkFormState })
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'row' },
-                        _react2.default.createElement(
-                            'label',
-                            null,
-                            'Last name:'
-                        ),
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'input-wrapper' },
-                            _react2.default.createElement('input', { type: 'text', name: 'lastName', className: 'text-input', defaultValue: lastName, onChange: this.checkFormState })
-                        )
-                    ),
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'row' },
-                        _react2.default.createElement(
-                            'label',
-                            null,
-                            'Phone:'
-                        ),
-                        _react2.default.createElement(
-                            'div',
-                            { className: 'input-wrapper' },
-                            _react2.default.createElement(_reactInputMask2.default, { type: 'text', name: 'phone', className: 'text-input', mask: '999-99-99', alwaysShowMask: true, onChange: this.checkFormState, defaultValue: phone })
-                        )
-                    )
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'btn-wrapper' },
-                    _react2.default.createElement('input', { className: 'btn btn-confirm', type: 'submit', value: 'Save', disabled: !this.state.isButtonsEnabled })
-                )
-            );
-        }
-    }]);
+			return _react2.default.createElement(
+				'form',
+				{ className: 'contact-form', onSubmit: this.handleSubmit, ref: this.contactForm },
+				_react2.default.createElement(
+					'fieldset',
+					{ className: 'section' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'row' },
+						_react2.default.createElement(
+							'label',
+							null,
+							'First name:'
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'input-wrapper' },
+							_react2.default.createElement('input', { type: 'text', name: 'firstName', className: 'text-input', autoFocus: true, defaultValue: firstName, onChange: this.checkFormState })
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'row' },
+						_react2.default.createElement(
+							'label',
+							null,
+							'Second name:'
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'input-wrapper' },
+							_react2.default.createElement('input', { type: 'text', name: 'secondName', className: 'text-input', defaultValue: secondName, onChange: this.checkFormState })
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'row' },
+						_react2.default.createElement(
+							'label',
+							null,
+							'Last name:'
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'input-wrapper' },
+							_react2.default.createElement('input', { type: 'text', name: 'lastName', className: 'text-input', defaultValue: lastName, onChange: this.checkFormState })
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'row' },
+						_react2.default.createElement(
+							'label',
+							null,
+							'Phone:'
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'input-wrapper' },
+							_react2.default.createElement(_reactInputMask2.default, { type: 'text', name: 'phone', className: 'text-input', mask: '999-99-99', alwaysShowMask: true, onChange: this.checkFormState, defaultValue: phone })
+						)
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'btn-wrapper' },
+					_react2.default.createElement('input', { className: 'btn btn-confirm', type: 'submit', value: 'Save', disabled: !this.state.isButtonsEnabled })
+				)
+			);
+		}
+	}]);
 
-    return ContactForm;
+	return ContactForm;
 }(_react2.default.Component);
 
 exports.default = ContactForm;
@@ -28472,27 +28472,34 @@ exports.default = (0, _redux.createStore)(function () {
 	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initState;
 	var action = arguments[1];
 
-	console.log('state', state, 'action', action);
+	//console.log('state', state, 'action', action)
 
 	if (action.type === 'CONTACTS.POPULATE') {
-		return Object.assign({}, state, { contacts: [].concat(_toConsumableArray(action.data)), loaded: true });
+		return Object.assign({}, state, {
+			contacts: [].concat(_toConsumableArray(action.data)),
+			loaded: true
+		});
 	}
 
 	if (action.type === 'CONTACT.SELECT') {
-		return Object.assign({}, state, { selectedContactID: (action.data || {}).id || '' });
+		return Object.assign({}, state, {
+			selectedContactID: action.selectedContactID
+		});
 	}
 
 	if (action.type === 'CONTACT.CREATE') {
-		return Object.assign({}, state, { contacts: [action.data].concat(_toConsumableArray(state.contacts)) });
+		return Object.assign({}, state, {
+			selectedContactID: action.contact.id,
+			contacts: [action.contact].concat(_toConsumableArray(state.contacts))
+		});
 	}
 
 	if (action.type === 'CONTACT.UPDATE') {
-
 		return Object.assign({}, state, {
 			contacts: state.contacts.map(function (item) {
-				return item.id === action.data.id ? Object.assign(item, action.data.params) : item;
+				return item.id === action.contact.id ? Object.assign(item, action.contact.params) : item;
 			}),
-			selectedContactID: action.data.id
+			selectedContactID: action.contact.id
 		});
 	}
 
@@ -28605,7 +28612,11 @@ var Header = function (_React$Component) {
 
 				preConfirm: function preConfirm() {
 					return _axios2.default.delete(_this2.props.url + selectedContactID).then(function (response) {
-						return deleteContact(selectedContactID);
+						deleteContact(selectedContactID);
+						location.hash = '#';
+					}).catch(function (error) {
+						deleteContact(selectedContactID);
+						location.hash = '#';
 					});
 				}
 			});
@@ -33176,10 +33187,16 @@ exports.default = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+exports.default = function (props) {
+	return _react2.default.createElement(
+		'div',
+		{ className: 'main' },
+		props.children
+	);
+};
 
 var _react = __webpack_require__(0);
 
@@ -33188,37 +33205,6 @@ var _react2 = _interopRequireDefault(_react);
 __webpack_require__(137);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Main = function (_React$Component) {
-    _inherits(Main, _React$Component);
-
-    function Main() {
-        _classCallCheck(this, Main);
-
-        return _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).apply(this, arguments));
-    }
-
-    _createClass(Main, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                { className: 'main' },
-                this.props.children
-            );
-        }
-    }]);
-
-    return Main;
-}(_react2.default.Component);
-
-exports.default = Main;
 
 /***/ }),
 /* 137 */
@@ -33259,7 +33245,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+	value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -33285,127 +33271,128 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var ContactList = function (_React$Component) {
-    _inherits(ContactList, _React$Component);
+	_inherits(ContactList, _React$Component);
 
-    function ContactList(props) {
-        _classCallCheck(this, ContactList);
+	function ContactList(props) {
+		_classCallCheck(this, ContactList);
 
-        var _this = _possibleConstructorReturn(this, (ContactList.__proto__ || Object.getPrototypeOf(ContactList)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (ContactList.__proto__ || Object.getPrototypeOf(ContactList)).call(this, props));
 
-        _this.state = {
-            selectedElement: null
-        };
+		_this.state = {
+			selectedElement: null
+		};
 
-        _this.toggleSelect = _this.toggleSelect.bind(_this);
-        return _this;
-    }
+		_this.toggleSelect = _this.toggleSelect.bind(_this);
+		return _this;
+	}
 
-    _createClass(ContactList, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            var _this2 = this;
+	_createClass(ContactList, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var _this2 = this;
 
-            window.axios = _axios2.default;
+			window.axios = _axios2.default;
 
-            if (!this.props.loaded) {
-                _axios2.default.get(this.props.url).then(function (response) {
-                    return _this2.props.populateContacts(response.data);
-                }).catch(function (error) {
-                    return _this2.props.populateContacts([]);
-                });
-            }
-        }
-    }, {
-        key: 'toggleSelect',
-        value: function toggleSelect(contact) {
-            var _this3 = this;
+			if (!this.props.loaded) {
+				_axios2.default.get(this.props.url).then(function (response) {
+					return _this2.props.populateContacts(response.data);
+				}).catch(function (error) {
+					return _this2.props.populateContacts([]);
+				});
+			}
+		}
+	}, {
+		key: 'toggleSelect',
+		value: function toggleSelect(contact) {
+			var _this3 = this;
 
-            return function (e) {
-                var selectedElement = _this3.state.selectedElement;
-                var selectedContactID = _this3.props.selectedContactID;
-
-
-                selectedElement && selectedElement.classList.remove('selected');
-
-                if (selectedElement !== e.currentTarget) {
-                    selectedElement = e.currentTarget;
-                    selectedElement.classList.add('selected');
-                } else {
-                    selectedElement = null;
-                }
-
-                _this3.setState({ selectedElement: selectedElement });
-
-                _this3.props.setContact(selectedElement ? contact : null);
-            };
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            var _this4 = this;
-
-            var contacts = this.props.contacts;
+			return function (e) {
+				var selectedElement = _this3.state.selectedElement;
+				var selectedContactID = _this3.props.selectedContactID;
 
 
-            if (!this.props.loaded) {
-                return _react2.default.createElement(
-                    'h3',
-                    { className: 'section loading' },
-                    'Loading...'
-                );
-            } else {
+				if (e.currentTarget.classList.contains('selected')) {
+					e.currentTarget.classList.remove('selected');
 
-                return _react2.default.createElement(
-                    'ul',
-                    { className: 'user-list' },
-                    contacts.map(function (contact) {
-                        var selectedClassName = _this4.props.selectedContactID === contact.id ? ' selected' : '';
+					_this3.setState({ selectedElement: null });
+					_this3.props.setContact('');
+				} else {
+					selectedElement && selectedElement.classList.remove('selected');
+					selectedElement = e.currentTarget;
+					selectedElement.classList.add('selected');
 
-                        return _react2.default.createElement(
-                            'li',
-                            { className: "user-list__item" + selectedClassName, key: contact.id, onClick: _this4.toggleSelect(contact) },
-                            _react2.default.createElement(
-                                'div',
-                                { className: 'user-info' },
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'name' },
-                                    [contact.lastName, contact.firstName, contact.secondName].join(' ')
-                                ),
-                                _react2.default.createElement(
-                                    'div',
-                                    { className: 'phone' },
-                                    contact.phone
-                                )
-                            )
-                        );
-                    })
-                );
-            }
-        }
-    }]);
+					_this3.setState({ selectedElement: selectedElement });
+					_this3.props.setContact(contact.id);
+				}
+			};
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this4 = this;
 
-    return ContactList;
+			var contacts = this.props.contacts;
+
+
+			if (!this.props.loaded) {
+				return _react2.default.createElement(
+					'h3',
+					{ className: 'section loading' },
+					'Loading...'
+				);
+			} else {
+
+				return _react2.default.createElement(
+					'ul',
+					{ className: 'user-list' },
+					contacts.map(function (contact) {
+						var selectedClassName = _this4.props.selectedContactID === contact.id ? ' selected' : '';
+
+						return _react2.default.createElement(
+							'li',
+							{ className: "user-list__item" + selectedClassName, key: contact.id, onClick: _this4.toggleSelect(contact) },
+							_react2.default.createElement(
+								'div',
+								{ className: 'user-info' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'name' },
+									[contact.lastName, contact.firstName, contact.secondName].join(' ')
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'phone' },
+									contact.phone
+								)
+							)
+						);
+					})
+				);
+			}
+		}
+	}]);
+
+	return ContactList;
 }(_react2.default.Component);
 
 function mapStateToProps(state) {
-    return {
-        loaded: state.loaded,
-        contacts: state.contacts,
-        selectedContactID: state.selectedContactID,
-        url: state.url
-    };
+	return {
+		loaded: state.loaded,
+		contacts: state.contacts,
+		selectedContactID: state.selectedContactID,
+		url: state.url
+	};
 }
 
 function mapDispathToProps(dispatch) {
-    return {
-        setContact: function setContact(contact) {
-            dispatch({ type: 'CONTACT.SELECT', data: contact });
-        },
-        populateContacts: function populateContacts(contacts) {
-            dispatch({ type: 'CONTACTS.POPULATE', data: contacts });
-        }
-    };
+	return {
+		setContact: function setContact(selectedContactID) {
+			dispatch({ type: 'CONTACT.SELECT', selectedContactID: selectedContactID });
+		},
+		populateContacts: function populateContacts(contacts) {
+			dispatch({ type: 'CONTACTS.POPULATE', data: contacts });
+		}
+	};
 }
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispathToProps)(ContactList);
@@ -33476,7 +33463,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 	return {
 		saveContact: function saveContact(contact) {
-			dispatch({ type: 'CONTACT.CREATE', data: contact });
+			dispatch({ type: 'CONTACT.CREATE', contact: contact });
 		}
 	};
 }
@@ -34712,7 +34699,7 @@ module.exports = invariant;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 var _react = __webpack_require__(0);
@@ -34731,61 +34718,68 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function EditContact(props) {
 
-  var selectedContact = props.contacts.find(function (item) {
-    return item.id === props.selectedContactID;
-  }) || {};
+	var selectedContact = props.contacts.find(function (item) {
+		return item.id === props.selectedContactID;
+	}) || {};
 
-  var id = selectedContact.id,
-      firstName = selectedContact.firstName,
-      secondName = selectedContact.secondName,
-      lastName = selectedContact.lastName,
-      phone = selectedContact.phone;
+	var id = selectedContact.id,
+	    firstName = selectedContact.firstName,
+	    secondName = selectedContact.secondName,
+	    lastName = selectedContact.lastName,
+	    phone = selectedContact.phone;
 
 
-  var updateContact = function updateContact(contact) {
+	var updateContact = function updateContact(contact) {
 
-    axios.patch(props.url + id, { params: contact }).then(function (response) {
-      props.updateContact(response.data);
-      location.hash = '#';
-    });
-  };
+		axios.patch(props.url + id, { params: contact }).then(function (response) {
+			props.updateContact(response.data);
+			location.hash = '#';
+		}).catch(function (error) {
+			props.updateContact({
+				id: props.selectedContactID,
+				params: contact
+			});
 
-  if (!props.selectedContactID) {
-    return _react2.default.createElement(_reactRouter.Redirect, { to: '/' });
-  } else {
-    return _react2.default.createElement(
-      _react.Fragment,
-      null,
-      _react2.default.createElement(
-        'h2',
-        null,
-        'Edit contact'
-      ),
-      _react2.default.createElement(_contactForm2.default, {
-        firstName: firstName,
-        secondName: secondName,
-        lastName: lastName,
-        phone: phone,
-        onSave: updateContact
-      })
-    );
-  }
+			location.hash = '#';
+		});
+	};
+
+	if (!props.selectedContactID) {
+		return _react2.default.createElement(_reactRouter.Redirect, { to: '/' });
+	} else {
+		return _react2.default.createElement(
+			_react.Fragment,
+			null,
+			_react2.default.createElement(
+				'h2',
+				null,
+				'Edit contact'
+			),
+			_react2.default.createElement(_contactForm2.default, {
+				firstName: firstName,
+				secondName: secondName,
+				lastName: lastName,
+				phone: phone,
+				onSave: updateContact
+			})
+		);
+	}
 }
 
 function mapStateToProps(state) {
-  return {
-    url: state.url,
-    selectedContactID: state.selectedContactID,
-    contacts: state.contacts
-  };
+	return {
+		url: state.url,
+		selectedContactID: state.selectedContactID,
+		contacts: state.contacts
+	};
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
-    updateContact: function updateContact(contact) {
-      dispatch({ type: 'CONTACT.UPDATE', data: contact });
-    }
-  };
+	return {
+		updateContact: function updateContact(contact) {
+			dispatch({ type: 'CONTACT.UPDATE', contact: contact });
+		}
+	};
 }
 
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(EditContact);
@@ -35024,67 +35018,67 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps)(Calls);
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 
 exports.default = function () {
-  return _react2.default.createElement(
-    _react.Fragment,
-    null,
-    _react2.default.createElement(
-      "h2",
-      null,
-      "Task description"
-    ),
-    _react2.default.createElement(
-      "div",
-      { className: "section" },
-      _react2.default.createElement(
-        "h3",
-        null,
-        "Develop SPA which should manage contacts. User can work with:"
-      ),
-      _react2.default.createElement(
-        "ul",
-        { className: "simple-list" },
-        _react2.default.createElement(
-          "li",
-          null,
-          "list of contacts (better with pagination)"
-        ),
-        _react2.default.createElement(
-          "li",
-          null,
-          "contact creating (redux-form is allowed but not required)"
-        ),
-        _react2.default.createElement(
-          "li",
-          null,
-          "contact editing"
-        ),
-        _react2.default.createElement(
-          "li",
-          null,
-          "contact removing"
-        ),
-        _react2.default.createElement(
-          "li",
-          null,
-          "history of calls for each contact"
-        ),
-        _react2.default.createElement(
-          "li",
-          null,
-          "graphql theory"
-        )
-      )
-    ),
-    _react2.default.createElement(
-      "div",
-      { className: "section" },
-      "Front-end part should be developed as SPA with ES6, React and Redux. Back-end API should be mocked. (json-server)"
-    )
-  );
+	return _react2.default.createElement(
+		_react.Fragment,
+		null,
+		_react2.default.createElement(
+			"h2",
+			null,
+			"Task description"
+		),
+		_react2.default.createElement(
+			"div",
+			{ className: "section" },
+			_react2.default.createElement(
+				"h3",
+				null,
+				"Develop SPA which should manage contacts. User can work with:"
+			),
+			_react2.default.createElement(
+				"ul",
+				{ className: "simple-list" },
+				_react2.default.createElement(
+					"li",
+					null,
+					"list of contacts (better with pagination)"
+				),
+				_react2.default.createElement(
+					"li",
+					null,
+					"contact creating (redux-form is allowed but not required)"
+				),
+				_react2.default.createElement(
+					"li",
+					null,
+					"contact editing"
+				),
+				_react2.default.createElement(
+					"li",
+					null,
+					"contact removing"
+				),
+				_react2.default.createElement(
+					"li",
+					null,
+					"history of calls for each contact"
+				),
+				_react2.default.createElement(
+					"li",
+					null,
+					"graphql theory"
+				)
+			)
+		),
+		_react2.default.createElement(
+			"div",
+			{ className: "section" },
+			"Front-end part should be developed as SPA with ES6, React and Redux. Back-end API should be mocked. (json-server)"
+		)
+	);
 };
 
 var _react = __webpack_require__(0);

@@ -41,7 +41,16 @@ class Header extends React.Component {
 			preConfirm: () => {
 				return axios
 					.delete(this.props.url + selectedContactID)
-					.then(response => deleteContact(selectedContactID));
+
+					.then(response => {
+						deleteContact(selectedContactID)
+						location.hash = '#';
+					})
+
+					.catch(error => {
+						deleteContact(selectedContactID)
+						location.hash = '#';
+					})
 			}
 		})
 	}

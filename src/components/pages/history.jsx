@@ -4,7 +4,7 @@ import {Route} from 'react-router-dom'
 import Calls from '../calls/calls.jsx';
 
 export default function(props) {
-    let {id} = props.selectedContact || {};
+	let {id} = props.selectedContact || {};
 
 	return (
 		<Fragment>
