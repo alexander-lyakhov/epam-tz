@@ -16,7 +16,7 @@ function NewContact(props) {
 
 		axios.post(props.url, {params: contact}).then(response => {
 			props.saveContact(contact);
-			location.href="/#";
+			location.hash = '#';
 		});
 	}
 
