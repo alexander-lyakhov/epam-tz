@@ -24,16 +24,26 @@ export default createStore(function(state = initState, action) {
 
 	if (action.type === 'CONTACT.UPDATE') {
 
-		return Object.assign ({}, state,
-			{
-				contacts: state.contacts.map(function(item) {
-					return item.id === action.data.id ? Object.assign(item, action.data.params) : item;
-				}),
+		return Object.assign ({}, state, {
+			contacts: state.contacts.map(item => item.id === action.data.id ? Object.assign(item, action.data.params):item),
+			selectedContactID: action.data.id
+		});
+	}
 
-				selectedContactID: action.data.id
-			}
-		);
+	if (action.type === 'CONTACT.DELETE') {
 
+		let deleteIndex = state.contacts.findIndex(item => item.id === action.selectedContactID);
+
+		if (deleteIndex < 0) {
+			return state;
+		}
+
+		state.contacts.splice(deleteIndex, 1);
+
+		return Object.assign ({}, state, {
+			selectedContactID: '',
+			contacts: state.contacts.map(item => item)
+		});
 	}
 
 	return state;
